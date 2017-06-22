@@ -1,0 +1,29 @@
+package com.in28minutes.common;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class CommonController {
+	
+	@RequestMapping(value ="/about")
+	public String showAboutPage()
+	{
+		return "about";
+	}
+	
+	@RequestMapping(value ="/news")
+	public String showNewsPage()
+	{
+		return "news";
+	}
+	
+	@RequestMapping(value ="/contact")
+	public String showContactPage()
+	{
+		return "contact";
+	}
+	
+
+}
