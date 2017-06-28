@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
-
 @Controller
 @SessionAttributes("currentUser")
 public class LoginController {
@@ -18,11 +16,11 @@ public class LoginController {
 	@Autowired
 	LoginService service;
 	
-	@RequestMapping(value = "/")
-	public String Hello()
-	{
-		return "login";
-	}
+//	@RequestMapping(value = "/")
+//	public String Hello()
+//	{
+//		return "login";
+//	}
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET )

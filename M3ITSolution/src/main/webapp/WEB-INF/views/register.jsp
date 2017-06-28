@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<title>News</title>
+<title>Sign Up</title>
 </head>
 <body>
 <!-- Header -->
@@ -14,11 +14,15 @@
 <br>
 <br>
 <!-- Body -->
-<div class =container>
-<div class = "page-header">
-<h4>News</h4>
-</div>
-</div>
+<div class ="container">
+ <p><font color="red">${errorMessage}</font></p>
+ <form action="/login" method ="post">
+ <fieldset class ="form-group">
+ 	<label>Name :</label> <input name="name" type="text" class="control" required="required"/><label>Password : </label><input name="password" type="password" class="control" required="required"/> 
+ </fieldset>
+ 	<input type="submit" />
+ </form>
+ </div>
 <br>
 <br>
 <br>

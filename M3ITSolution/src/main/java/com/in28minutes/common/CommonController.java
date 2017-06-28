@@ -7,6 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommonController {
 	
+	@RequestMapping(value = "/")
+	public String showWelcomePage()
+	{
+		return "welcome";
+	}
+	
+	@RequestMapping(value = "/register")
+	public String showRegisterPage()
+	{
+		return "register";
+	}
 	@RequestMapping(value ="/about")
 	public String showAboutPage()
 	{

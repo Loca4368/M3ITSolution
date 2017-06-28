@@ -4,15 +4,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Todo</title>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<title>About</title>
 </head>
 <body>
-Hello, ${currentUser}
-Add Todos</br>
-
+<!-- Header -->
+<jsp:include page="header.jsp" flush="true"></jsp:include>
+<br>
+<br>
+<br>
+<!-- Body -->
+<div class =container>
+<div class = "page-header">
+<h4>Add Todo</h4>
+</div>
 <form method ="post">
-<input type="text" name ="desc"/>
-<input type="submit" value="Add">
+	<fieldset class="form-group">
+	<label>Description</label>
+	<input type="text" name ="desc" class="control" required ="required"/>
+	<label>Number</label>
+	<input type="text" name ="number" class="control" />
+	<label>Complete Date</label>
+	<input type="text" name ="date" class="control" pattern="\d{1,2}/\d{1,2}/\d{4}"/>
+	</fieldset>
+	<input type="submit" value="Add" class="btn btn-success">
 </form>
+</div>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<%@ include file="footer.jsp" %>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
