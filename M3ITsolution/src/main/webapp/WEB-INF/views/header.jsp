@@ -9,6 +9,7 @@
 		</ul>
 		<div class="profile navbar-right">
 			<ul class="nav navbar-nav">
+				<li>Welcome ${currentUser}</li>
 				<li><a href="">Sign in</a></li>
 				<li><a href="">Sign up</a></li>
 			</ul>
