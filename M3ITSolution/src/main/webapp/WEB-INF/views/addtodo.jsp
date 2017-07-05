@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,17 +19,20 @@
 <div class = "page-header">
 <h4>Add Todo</h4>
 </div>
-<form method ="post">
+<form:form method ="post" commandName="todo">
 	<fieldset class="form-group">
-	<label>Description</label>
-	<input type="text" name ="desc" class="control" required ="required"/>
+	<form:label path="desc">Description</form:label>
+	<form:input path ="desc" type="text"  class="control" required ="required"></form:input>
+	<form:errors path ="desc" cssClass ="text-warning"></form:errors>
+	<!-- 
 	<label>Number</label>
 	<input type="text" name ="number" class="control" />
 	<label>Complete Date</label>
 	<input type="text" name ="date" class="control" pattern="\d{1,2}/\d{1,2}/\d{4}"/>
+	 -->
 	</fieldset>
 	<input type="submit" value="Add" class="btn btn-success">
-</form>
+</form:form>
 </div>
 <br>
 <br>
