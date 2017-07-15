@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<title>About</title>
+<title>AddtoDo</title>
 </head>
 <body>
 <!-- Header -->
@@ -19,7 +19,9 @@
 <div class = "page-header">
 <h4>Add Todo</h4>
 </div>
-<form:form method ="post" commandName="todo">
+<form:form method ="post" commandName="todotask">
+	<form:hidden path="id"/>
+	<form:hidden path="user"/>
 	<fieldset class="form-group">
 	<form:label path="desc">Description</form:label>
 	<form:input path ="desc" type="text"  class="control" required ="required"></form:input>
@@ -31,7 +33,7 @@
 	<input type="text" name ="date" class="control" pattern="\d{1,2}/\d{1,2}/\d{4}"/>
 	 -->
 	</fieldset>
-	<input type="submit" value="Add" class="btn btn-success">
+	<input type="submit" value="Submit" class="btn btn-success">
 </form:form>
 </div>
 <br>

@@ -21,28 +21,31 @@ public class TodoController {
 	@RequestMapping(value ="/todo")
 	public String showTodoPage(ModelMap model)
 	{
+		//model.addAttribute("todos",service.retrieveTodo(1));
 		model.addAttribute("todos",service.retrieveTodos("Ming"));
 		return "todo";
 	}
 	@RequestMapping(value ="/addtodo")
 	public String shwoAddTodoPage(ModelMap model)
 	{
-		model.addAttribute("todo", new Todo(0,"Ming","",new Date(),false));
+		//Hardcode current user for dispaly
+		model.addAttribute("todotask", new Todo(0,"Ming","",new Date(),false));
 		return "addtodo";
 	}
 	
 	
 	@RequestMapping(value ="/addtodo", method = RequestMethod.POST)
-	public String handleAddTodoPage(ModelMap model,@Valid Todo todo, BindingResult result)
+	public String handleAddTodoPage(ModelMap model,@Valid Todo todo6, BindingResult result)
 	{
 		if(result.hasErrors())
 		{
 			return "addtodo";
 		}
-		service.addTodo("Ming",todo.getDesc(), new Date(), false);
+		service.addTodo("Ming",todo6.getDesc(), new Date(), false);
 		return "redirect:todo";
 	}
 	
+	//Handle delete
 	@RequestMapping(value ="/delete-todo", method = RequestMethod.GET)
 	public String handleDeleteTodo(@RequestParam int id, ModelMap model)
 	{
@@ -50,5 +53,32 @@ public class TodoController {
 		model.clear();
 		return "redirect:todo";
 	}
+	
+	//Handle update
+	@RequestMapping(value ="/update-todo", method = RequestMethod.GET)
+	public String showUpdateTodo(@RequestParam int id, ModelMap model)
+	{
+		Todo todo2 = service.retrieveTodo(id);
+		model.addAttribute("todotask",todo2);
+		//model.clear();
+		//return "redirect:todo";
+		return "addtodo";
+	}
+	
+	//Handle update
+		@RequestMapping(value ="/update-todo", method = RequestMethod.POST)
+		public String handleUpdadeTodo(ModelMap model, @Valid Todo todo2, BindingResult result)
+		{
+			if(result.hasErrors())
+			{
+				return "addtodo";
+			}
+			//Todo todo = service.retrieveTodo(id);
+			//model.addAttribute("todo",todo);
+			service.updateTodo(todo2);
+			todo2.setUser("Ming");
+			todo2.setTargetDate(new Date());
+			return "redirect:todo";
+		}
 	
 }
