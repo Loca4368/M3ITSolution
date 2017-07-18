@@ -29,19 +29,19 @@ public class TodoController {
 	public String shwoAddTodoPage(ModelMap model)
 	{
 		//Hardcode current user for dispaly
-		model.addAttribute("todotask", new Todo(0,"Ming","",new Date(),false));
+		model.addAttribute("todo", new Todo(0,"Ming","",new Date(),false));
 		return "addtodo";
 	}
 	
 	
 	@RequestMapping(value ="/addtodo", method = RequestMethod.POST)
-	public String handleAddTodoPage(ModelMap model,@Valid Todo todo6, BindingResult result)
+	public String handleAddTodoPage(ModelMap model,@Valid Todo todo, BindingResult result)
 	{
 		if(result.hasErrors())
 		{
 			return "addtodo";
 		}
-		service.addTodo("Ming",todo6.getDesc(), new Date(), false);
+		service.addTodo("Ming",todo.getDesc(), new Date(), false);
 		return "redirect:todo";
 	}
 	
@@ -58,8 +58,8 @@ public class TodoController {
 	@RequestMapping(value ="/update-todo", method = RequestMethod.GET)
 	public String showUpdateTodo(@RequestParam int id, ModelMap model)
 	{
-		Todo todo2 = service.retrieveTodo(id);
-		model.addAttribute("todotask",todo2);
+		Todo todo = service.retrieveTodo(id);
+		model.addAttribute("todo",todo);
 		//model.clear();
 		//return "redirect:todo";
 		return "addtodo";
@@ -67,7 +67,7 @@ public class TodoController {
 	
 	//Handle update
 		@RequestMapping(value ="/update-todo", method = RequestMethod.POST)
-		public String handleUpdadeTodo(ModelMap model, @Valid Todo todo2, BindingResult result)
+		public String handleUpdadeTodo(ModelMap model, @Valid Todo todo, BindingResult result)
 		{
 			if(result.hasErrors())
 			{
@@ -75,9 +75,9 @@ public class TodoController {
 			}
 			//Todo todo = service.retrieveTodo(id);
 			//model.addAttribute("todo",todo);
-			service.updateTodo(todo2);
-			todo2.setUser("Ming");
-			todo2.setTargetDate(new Date());
+			service.updateTodo(todo);
+			todo.setUser("Ming");
+			todo.setTargetDate(new Date());
 			return "redirect:todo";
 		}
 	

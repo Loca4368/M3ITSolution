@@ -19,7 +19,7 @@
 <div class = "page-header">
 <h4>Add Todo</h4>
 </div>
-<form:form method ="post" commandName="todotask">
+<form:form method ="post" commandName="todo">
 	<form:hidden path="id"/>
 	<form:hidden path="user"/>
 	<fieldset class="form-group">
