@@ -1,4 +1,4 @@
-package com.in28minutes.common;
+package com.m3itsolution.common;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

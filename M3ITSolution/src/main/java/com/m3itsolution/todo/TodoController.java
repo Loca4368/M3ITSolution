@@ -1,4 +1,4 @@
-package com.in28minutes.todo;
+package com.m3itsolution.todo;
 
 import java.util.Date;
 

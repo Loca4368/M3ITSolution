@@ -1,4 +1,4 @@
-package com.in28minutes.todo;
+package com.m3itsolution.todo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +16,7 @@ public class TodoService {
 		todos.add(new Todo(1, "Ming", "Learn Spring MVC", new Date(),
 				false));
 		todos.add(new Todo(2, "Ming", "Learn Struts", new Date(), false));
-		todos.add(new Todo(3, "in28Minutes", "Learn Hibernate", new Date(),
+		todos.add(new Todo(3, "Ming", "Learn Hibernate", new Date(),
 				false));
 	}
 

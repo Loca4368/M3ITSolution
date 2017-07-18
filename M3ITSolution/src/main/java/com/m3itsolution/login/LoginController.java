@@ -1,4 +1,4 @@
-package com.in28minutes.login;
+package com.m3itsolution.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
