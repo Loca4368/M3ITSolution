@@ -1,34 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<title>SignIn</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Header -->
-<jsp:include page="header.jsp" flush="true"></jsp:include>
-<br>
-<br>
-<br>
+<%@ include file="common/header.jspf" %>
+
 <!-- Body -->
+<body>
+<!-- <jsp:include page="common/navigationbar.jspf" flush="true"></jsp:include> -->
+<%@ include file="common/navigationbar.jspf" %>
+<br>
+<br>
+<br>
 <div class ="container">
  <p><font color="red">${errorMessage}</font></p>
  <form action="/login" method ="post">
  <fieldset class ="form-group">
- 	<label>Name :</label> <input name="name" type="text" class="control" required="required"/><label>Password : </label><input name="password" type="password" class="control" required="required"/> 
+ 	<label>Name :</label> <input name="username" type="text" class="control" required="required"/><label>Password : </label><input name="password" type="password" class="control" required="required"/> 
  </fieldset>
- 	<input type="submit" class ="btn btn-default" />
+ 	<input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
+ 	<input type="submit" />
  </form>
  </div>
 <br>
 <br>
 <br>
 <!-- Footer -->
-<%@ include file="footer.jsp" %>
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</body>
-</html>
+<%@ include file="common/footerbar.jspf" %>
+<%@ include file="common/footer.jspf" %>

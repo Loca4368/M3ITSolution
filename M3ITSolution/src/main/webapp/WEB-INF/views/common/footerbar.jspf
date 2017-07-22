@@ -37,14 +37,16 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
 </style>
+<link href ="/static/css/footerbar.css" rel="stylesheet">
+<link href ="/static/css/google.fonts.css" rel="stylesheet">
 <!--footer start from here-->
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-6 footerleft ">
         <div class="logofooter"> M3TISolution(Logo)</div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-        <p><i class="fa fa-map-pin"></i>183 Walker Street, North Sydney, NSW2060</p>
+        <p>We specialize in providing professional IT Solution for Business</p>
+        <p><i class="fa fa-map-pin"></i>138 Walker Street, North Sydney, NSW2060</p>
         <p><i class="fa fa-phone"></i> Phone (Australia) : +61 405 373 077</p>
         <p><i class="fa fa-envelope"></i> E-mail : qiuming4368@gmail.com</p>
         
@@ -52,21 +54,21 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
       <div class="col-md-2 col-sm-6 paddingtop-bottom">
         <h6 class="heading7">GENERAL LINKS</h6>
         <ul class="footer-ul">
-          <li><a href="#"> Career</a></li>
+          <!--  <li><a href="#"> Career</a></li> -->
           <li><a href="#"> Privacy Policy</a></li>
           <li><a href="#"> Terms & Conditions</a></li>
-          <li><a href="#"> Client Gateway</a></li>
-          <li><a href="#"> Ranking</a></li>
-          <li><a href="#"> Case Studies</a></li>
-          <li><a href="#"> Frequently Ask Questions</a></li>
+          <!--  <li><a href="#"> Client Gateway</a></li> -->
+          <!--   <li><a href="#"> Ranking</a></li> -->
+          <!--  <li><a href="#"> Case Studies</a></li> -->
+          <li><a href="#"> FAQs</a></li>
         </ul>
       </div>
       <div class="col-md-3 col-sm-6 paddingtop-bottom">
         <h6 class="heading7">LATEST POST</h6>
         <div class="post">
-          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>Check out Laster big Offer<span>July 3,2017</span></p>
+         <!-- <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p> -->
+         <!-- <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p> -->
         </div>
       </div>
       <div class="col-md-3 col-sm-6 paddingtop-bottom">
