@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Header -->
 <%@ include file="common/header.jspf" %>
 
@@ -10,7 +11,8 @@
 <br>
 <div class ="container">
 <div class = "page-header">
-<h4><a href="/todo">${greetingMessag}Manage Your Todos</a></h4>
+Hi ${user}, Welcome to M3ITSolution.
+<h4><a href="/todo">Manage Your Todos</a></h4>
 </div>
 </div>
 <br>

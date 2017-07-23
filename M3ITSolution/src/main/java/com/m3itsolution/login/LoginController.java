@@ -3,6 +3,8 @@ package com.m3itsolution.login;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,33 +13,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.m3itsolution.todo.TodoService;
  
 @Controller
 public class LoginController {
  
-     
+	@Autowired
+	LoginService loginservice;
+	
+	
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
-        model.addAttribute("greetingMessage", "Hi, Welcome to M3ITSolution");
-        return "welcome";
+        //model.addAttribute("greetingMessage", "Welcome to M3ITSolution");
+        //return "redirect:welcome";
+    	return "welcome";
     }
  
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
+        //model.addAttribute("user", getPrincipal());
+    	model.addAttribute("user",loginservice.getLoggedInUserName());
+    	
         return "admin";
     }
     
     @RequestMapping(value = "/db", method = RequestMethod.GET)
     public String dbaPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
+        model.addAttribute("user", loginservice.getLoggedInUserName());
         return "dba";
     }
     
  
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
+        model.addAttribute("user", loginservice.getLoggedInUserName());
         return "accessDenied";
     }
  
@@ -56,16 +66,6 @@ public class LoginController {
         return "redirect:/login?logout";
     }
  	*/
-    private String getPrincipal(){
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
- 
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
-    }
+    
  
 }

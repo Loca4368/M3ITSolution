@@ -90,7 +90,6 @@
                         <contextReloadable>true</contextReloadable>
                     </configuration>
                 </plugin>
-                <!-- 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -101,7 +100,6 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
-                 -->
             </plugins>
         </pluginManagement>
         <finalName>M3ITSolution0.0.1-SNAPSHOT</finalName>

@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
  
 @Configuration
 @EnableWebSecurity
@@ -15,19 +16,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("Ming").password("123456").roles("USER");
+        auth.inMemoryAuthentication().withUser("Test").password("123456").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("Qiu").password("123456").roles("ADMIN","DBA");
     }
      
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       
+    	
+    	
+    	    http.sessionManagement()
+    	    .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+    
       http.authorizeRequests()
         .antMatchers("/").permitAll()
         .antMatchers("/**tod**").access("hasRole('USER')")
         .antMatchers("/admin/**").access("hasRole('ADMIN')")
         .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
         .and().formLogin().loginPage("/login")
+        .defaultSuccessUrl("/welcome", true)
         .usernameParameter("username").passwordParameter("password")
         .and().csrf()
         .and().exceptionHandling().accessDeniedPage("/Access_Denied");

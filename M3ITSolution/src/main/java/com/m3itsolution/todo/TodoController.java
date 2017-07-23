@@ -18,25 +18,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.m3itsolution.login.LoginService;
+
 @Controller
 public class TodoController {
 	
 	@Autowired
-	TodoService service;
+	TodoService todoservice;
 	
+	@Autowired
+	LoginService loginservice;
 	
 	/*
 	 *Get user
 	 */
-
-	private String retrieveLoggedinUserName() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-		if (principal instanceof UserDetails)
-			return ((UserDetails) principal).getUsername();
-		
-		return principal.toString();
-	}
 	
 	
 	//Use InitBinder for TargetDate field in todo form
@@ -58,10 +53,9 @@ public class TodoController {
 	public String showTodoPage(ModelMap model)
 	{
 		//model.addAttribute("todos",service.retrieveTodo(1));
-		model.addAttribute("todos",service.retrieveTodos(retrieveLoggedinUserName()));
+		model.addAttribute("todos",todoservice.retrieveTodos(loginservice.getLoggedInUserName()));
 		return "todo";
 	}
-
 
 	
 	 /*
@@ -72,7 +66,7 @@ public class TodoController {
 	public String shwoAddTodoPage(ModelMap model)
 	{
 		//Hardcode current user for dispaly
-		model.addAttribute("todo", new Todo(0,retrieveLoggedinUserName(),"",new Date(),false));
+		model.addAttribute("todo", new Todo(0,loginservice.getLoggedInUserName(),"",new Date(),false));
 		return "addtodo";
 	}
 	
@@ -84,7 +78,7 @@ public class TodoController {
 		{
 			return "addtodo";
 		}
-		service.addTodo(retrieveLoggedinUserName(),todo.getDesc(), new Date(), false);
+		todoservice.addTodo(loginservice.getLoggedInUserName(),todo.getDesc(), new Date(), false);
 		return "redirect:todo";
 	}
 	
@@ -92,7 +86,7 @@ public class TodoController {
 	@RequestMapping(value ="/delete-todo", method = RequestMethod.GET)
 	public String handleDeleteTodo(@RequestParam int id, ModelMap model)
 	{
-		service.deleteTodo(id);
+		todoservice.deleteTodo(id);
 		model.clear();
 		return "redirect:todo";
 	}
@@ -104,7 +98,7 @@ public class TodoController {
 	@RequestMapping(value ="/update-todo", method = RequestMethod.GET)
 	public String showUpdateTodo(@RequestParam int id, ModelMap model)
 	{
-		Todo todo = service.retrieveTodo(id);
+		Todo todo = todoservice.retrieveTodo(id);
 		model.addAttribute("todo",todo);
 		//model.clear();
 		//return "redirect:todo";
@@ -120,8 +114,8 @@ public class TodoController {
 		}
 		//Todo todo = service.retrieveTodo(id);
 		//model.addAttribute("todo",todo);
-		service.updateTodo(todo);
-		todo.setUser(retrieveLoggedinUserName());
+		todoservice.updateTodo(todo);
+		todo.setUser(loginservice.getLoggedInUserName());
 		//todo.setTargetDate(new Date());
 		return "redirect:todo";
 	}
