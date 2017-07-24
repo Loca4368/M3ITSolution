@@ -18,7 +18,8 @@ public class CommonController {
 	@RequestMapping(value = "/register")
 	public String showRegisterPage()
 	{
-		return "register";
+		throw new RuntimeException("Dummy Excpetion");
+		//return "register";
 	}
 	@RequestMapping(value ="/about")
 	public String showAboutPage()

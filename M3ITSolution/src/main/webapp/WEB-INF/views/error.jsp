@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Header -->
 <%@ include file="common/header.jspf" %>
 
@@ -12,16 +11,8 @@
 <br>
 <div class ="container">
 <div class = "page-header">
-<h4><strong>Home</strong></h4>
-    <p>${message}</p>
-	
-	<p><spring:message code="welcome.greeting"/></p>
-    
-    <!--  
-    	<p><spring:message code="welcome.greeting" arguments="${startMeeting}"/></p>
-    	Current Locale : ${pageContext.response.locale} / ${locale} 
-    -->
-<h4><a href="/todo">Manage Your Todos</a></h4>
+<h4>Error404</h4>
+Requested Source NOT Available
 </div>
 </div>
 <br>
