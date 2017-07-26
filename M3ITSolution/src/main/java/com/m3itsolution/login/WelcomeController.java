@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.m3itsolution.message.MessageService;
+
 @Controller
 @SessionAttributes("user")
 public class WelcomeController {
@@ -21,23 +23,22 @@ public class WelcomeController {
 	LoginService service;
 	
 	@Autowired
-    private MessageSource messageSource;
+	MessageService messageservice;
 	
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String showWelcomePage(ModelMap model,Locale locale) {
+	public String showWelcomePage(ModelMap model) {
 		
-		// add parametrized message from controller
-        String welcome = messageSource.getMessage("welcome.message", new Object[]{service.getLoggedInUserName()}, locale);
-        model.addAttribute("message", welcome);
-        
-        // obtain locale from LocaleContextHolder
-        Locale currentLocale = LocaleContextHolder.getLocale();
-        model.addAttribute("locale", currentLocale);
-        //model.addAttribute("startMeeting", "10:30");
-	
-        //Get logged in user
-		model.addAttribute("user", service.getLoggedInUserName());
-		return "welcome";
+		//Get Logged username
+		String userName  = service.getLoggedInUserName();
+		
+		//Get message
+		String welcomemessage= messageservice.getWelcomeMessage(userName);
+		
+		//Add message for View
+		model.addAttribute("welcomemessage", welcomemessage);
+        model.addAttribute("user", userName);
+		
+        return "welcome";
 	}
 	
 

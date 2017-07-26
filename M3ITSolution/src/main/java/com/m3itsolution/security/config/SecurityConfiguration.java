@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
         .and().formLogin().loginPage("/login")
         .defaultSuccessUrl("/welcome", true)
+        .failureUrl("/login?error")
         .usernameParameter("username").passwordParameter("password")
         .and().csrf()
         .and().exceptionHandling().accessDeniedPage("/Access_Denied");

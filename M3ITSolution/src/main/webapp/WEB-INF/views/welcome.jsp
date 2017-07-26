@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Header -->
 <%@ include file="common/header.jspf" %>
 
@@ -13,10 +14,11 @@
 <div class ="container">
 <div class = "page-header">
 <h4><strong>Home</strong></h4>
-    <p>${message}</p>
-	
-	<p><spring:message code="welcome.greeting"/></p>
+    <!--  
     
+    -->
+    <p>${welcomemessage}</p>
+	<p><spring:message code="welcome.greeting"/></p>
     <!--  
     	<p><spring:message code="welcome.greeting" arguments="${startMeeting}"/></p>
     	Current Locale : ${pageContext.response.locale} / ${locale} 
