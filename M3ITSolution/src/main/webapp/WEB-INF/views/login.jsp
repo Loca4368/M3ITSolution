@@ -10,7 +10,8 @@
 <br>
 <br>
 <div class ="container">
- <p><font color="red">${errorMessage}</font></p>
+ <!--  <p><font color="red">${errorMessage}</font></p> -->
+ <p><font color="red"></font><spring:message code="error.message"/></p>
  <form action="/login" method ="post">
  <fieldset class ="form-group">
  	<label>Name :</label> <input name="username" type="text" class="control" required="required"/><label>Password : </label><input name="password" type="password" class="control" required="required"/> 

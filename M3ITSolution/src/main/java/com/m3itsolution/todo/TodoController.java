@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.m3itsolution.login.LoginService;
+import com.m3itsolution.model.Todo;
+import com.m3itsolution.service.LoginService;
+import com.m3itsolution.service.TodoService;
+
 
 @Controller
 public class TodoController {
@@ -41,8 +44,6 @@ public class TodoController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				dateFormat, false));
 	}
-	
-	
 	
 	
 	/*
@@ -78,7 +79,9 @@ public class TodoController {
 		{
 			return "addtodo";
 		}
-		todoservice.addTodo(loginservice.getLoggedInUserName(),todo.getDesc(), new Date(), false);
+		//todoservice.addTodo(loginservice.getLoggedInUserName(),todo.getDesc(), new Date(), false);
+		todoservice.addTodo(todo);
+
 		return "redirect:todo";
 	}
 	
@@ -98,7 +101,7 @@ public class TodoController {
 	@RequestMapping(value ="/update-todo", method = RequestMethod.GET)
 	public String showUpdateTodo(@RequestParam int id, ModelMap model)
 	{
-		Todo todo = todoservice.retrieveTodo(id);
+		Todo todo = todoservice.retrieveTodoById(id);
 		model.addAttribute("todo",todo);
 		//model.clear();
 		//return "redirect:todo";

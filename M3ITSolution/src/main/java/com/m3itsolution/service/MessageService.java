@@ -1,4 +1,4 @@
-package com.m3itsolution.message;
+package com.m3itsolution.service;
 
 import java.util.Locale;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.m3itsolution.login.LoginService;
+//import com.m3itsolution.login.LoginService;
 
 @Service
 public class MessageService {

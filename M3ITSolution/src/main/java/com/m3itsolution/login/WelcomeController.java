@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.m3itsolution.message.MessageService;
+import com.m3itsolution.service.LoginService;
+import com.m3itsolution.service.MessageService;
+
 
 @Controller
 @SessionAttributes("user")

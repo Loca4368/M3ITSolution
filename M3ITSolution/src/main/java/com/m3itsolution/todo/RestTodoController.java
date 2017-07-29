@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.m3itsolution.model.Todo;
+import com.m3itsolution.service.TodoService;
+
 @RestController
 public class RestTodoController {
 	
@@ -21,6 +24,6 @@ public class RestTodoController {
 
 	@RequestMapping(value = "/todo/{id}", method = RequestMethod.GET)
 	public Todo retrieveTodo(@PathVariable("id") int id) {
-		return todoservice.retrieveTodo(id);
+		return todoservice.retrieveTodoById(id);
 	}
 }

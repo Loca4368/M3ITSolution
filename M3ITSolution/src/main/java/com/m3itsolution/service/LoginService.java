@@ -1,4 +1,4 @@
-package com.m3itsolution.login;
+package com.m3itsolution.service;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
