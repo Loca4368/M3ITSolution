@@ -26,38 +26,45 @@ public class UserDAOImpl implements UserDAO {
 	
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<User> listUsers() {
 		
 		Criteria criteria = getSession().createCriteria(User.class);
 		
 		return (List<User>)criteria.list();
 	}
-	@Override
+	
 	public void addUser(User user) {
 		
 		getSession().persist(user);
 		//logger.info("User add successfully, User Details="+p);
 	}
 
-	@Override
+	
 	public void updateUser(User user) {
 		
 		getSession().update(user);
 		
 	}
 
-	@Override
+	
 	public User getUserById(int id) {
 		
 		User user = (User) getSession().get(User.class,id);
 		return user;
 	}
 
-	@Override
+	
 	public void removeUser(int id) {
 		
 		User user = (User) getSession().get(User.class,id);
 		getSession().delete(user);
+	}
+	
+	//Get name
+	public String getNameById(int id)
+	{
+		return (String) getSession().get("username", id);
+		
 	}
 }

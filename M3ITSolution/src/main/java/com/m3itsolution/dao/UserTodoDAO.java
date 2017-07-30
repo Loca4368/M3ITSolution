@@ -13,7 +13,11 @@ public interface UserTodoDAO {
 	public List<Todo> retrieveTodos(String user);
 	public Todo retrieveTodoById(int id);
 	public void addTodo(Todo todo);
-	public void updateTodo(Todo todo);
+	public void updateTodo(Todo todo, int id);
 	public void deleteTodo(int id);
-
+	
+	
+	
 }
+
+

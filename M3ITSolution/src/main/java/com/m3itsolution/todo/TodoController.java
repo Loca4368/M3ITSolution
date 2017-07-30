@@ -65,9 +65,13 @@ public class TodoController {
 	
 	@RequestMapping(value ="/addtodo")
 	public String shwoAddTodoPage(ModelMap model)
-	{
-		//Hardcode current user for dispaly
-		model.addAttribute("todo", new Todo(0,loginservice.getLoggedInUserName(),"",new Date(),false));
+	{	
+		
+		//
+		//String userName = loginservice.getLoggedInUserName();
+		//model.addAttribute("todo", new Todo(0,loginservice.getLoggedInUserName(),"",new Date(),false));
+		model.addAttribute("todo", new Todo(0,loginservice.getLoggedInUserId(),"",new Date(),false));
+		
 		return "addtodo";
 	}
 	
@@ -118,7 +122,8 @@ public class TodoController {
 		//Todo todo = service.retrieveTodo(id);
 		//model.addAttribute("todo",todo);
 		todoservice.updateTodo(todo);
-		todo.setUser(loginservice.getLoggedInUserName());
+		//todo.setUser(loginservice.getLoggedInUserName());
+		//todo.setUser(loginservice.getLoggedInUserName());
 		//todo.setTargetDate(new Date());
 		return "redirect:todo";
 	}

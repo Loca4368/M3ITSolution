@@ -2,19 +2,33 @@ package com.m3itsolution.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.persistence.Id;
 
 @Entity
 @Table(name = "todo")
 public class Todo {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String user;
+	
+	@Column (name ="userID")
+	private int userId;
+	
 	@Size(min = 6, message ="Enter at least 6 characters")
+	@Column (name ="Description")
 	private String desc;
+	
+	@Column (name ="TargetDate")
 	private Date targetDate;
+	
+	@Column (name ="IsDone")
 	private boolean isDone;
 	
 	//Default Constructor
@@ -22,11 +36,11 @@ public class Todo {
 	{
 		
 	}
-	public Todo(int id, String user, String desc, Date targetDate,
+	public Todo(int id, int userId, String desc, Date targetDate,
 			boolean isDone) {
 		super();
 		this.id = id;
-		this.user = user;
+		this.userId = userId;
 		this.desc = desc;
 		this.targetDate = targetDate;
 		this.isDone = isDone;
@@ -37,11 +51,11 @@ public class Todo {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser(String user) {
-		this.user = user;
+	public void setUser(int userId) {
+		this.userId = userId;
 	}
 	public String getDesc() {
 		return desc;
@@ -85,7 +99,7 @@ public class Todo {
 	public String toString() {
 		return String.format(
 				"Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id,
-				user, desc, targetDate, isDone);
+				userId, desc, targetDate, isDone);
 	}
 
 

@@ -3,9 +3,8 @@ package com.m3itsolution.mvc.config;
 
 import java.util.Properties;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
-
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +18,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -32,8 +32,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = "com.m3itsolution.mvc.config")
-@PropertySource("classpath:config.properties")
-//@PropertySource(value = {"classpath:config.properties"})
+//@PropertySource("classpath:config.properties")
+@PropertySource(value = {"classpath:config.properties"})
 public class HibernateConfiguration {
 	
 	@Autowired
@@ -65,8 +65,9 @@ public class HibernateConfiguration {
 	
     private Properties getHibernateProperties()
     {
+    	
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dalect"));
         properties.put("hibernate.show_sql",environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         
@@ -81,11 +82,7 @@ public class HibernateConfiguration {
         htm.setSessionFactory(sessionFactory);
         return htm;
     }
-	
-	
-	
-	//
-    /*
+
     @Bean
     @Autowired
     public HibernateTemplate getHibernateTemplate(SessionFactory sessionFactory)
@@ -93,7 +90,7 @@ public class HibernateConfiguration {
         HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
         return hibernateTemplate;
     }
-    */	 
+   	 
 	
 }
 

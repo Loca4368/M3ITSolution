@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.m3itsolution.model.Todo;;
@@ -12,66 +15,53 @@ import com.m3itsolution.model.Todo;;
 @Repository
 public class UserTodoDAOImpl implements UserTodoDAO{
 	
-	private static List<Todo> todos = new ArrayList<Todo>();
-	private static int todoCount = 3;
-
-	static {
-		todos.add(new Todo(1, "Ming", "Learn Spring MVC", new Date(),
-				false));
-		todos.add(new Todo(2, "Ming", "Learn Struts", new Date(), false));
-		todos.add(new Todo(3, "Ming", "Learn Hibernate", new Date(),
-				false));
-	}
 	
-	@SuppressWarnings("unchecked")
+	private HibernateTemplate hibernateTemplate;
+	
+	@Autowired
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
 	@Override
-	public List<Todo> retrieveTodos(String user) {
-		List<Todo> filteredTodos = new ArrayList<Todo>();
-		for (Todo todo : todos) {
-			if (todo.getUser().equals(user))
-				filteredTodos.add(todo);
-		}
-		return filteredTodos;
+	public void addTodo(Todo todo) {
+		hibernateTemplate.save(todo);
 	}
 
 	@Override
 	public Todo retrieveTodoById(int id) {
-		for (Todo todo : todos) {
-			if (todo.getId() == id)
-				return todo;
-		}
-		return null;
-	}
-	
-	
-	//Todo
-	@Override
-	public void addTodo(Todo todo) {
-		
-		//todos.add(new Todo(++todoCount, name, desc, targetDate, isDone));
-		todos.add(todo);
-		
-	}
-
-	@Override
-	public void updateTodo(Todo todo) {
-		
-		todos.remove(todo);
-		todos.add(todo);
-		
+		Todo todo = hibernateTemplate.get(Todo.class,id);
+		return todo;
 	}
 
 	@Override
 	public void deleteTodo(int id) {
+		Todo todo=new Todo();
+		todo.setId(id);
 		
-		Iterator<Todo> iterator = todos.iterator();
-		while (iterator.hasNext()) {
-			Todo todo = iterator.next();
-			if (todo.getId() == id) {
-				iterator.remove();
-			}
-		}
-		
+		hibernateTemplate.delete(todo);
 	}
+	
+	
+	//To be fixed
+	@Override
+	public void updateTodo(Todo todo, int id) {
+		
+		//Todo todo = hibernateTemplate.get(Todo.class,id);
+		
+		
+		//employee.setEmail(newEmail);
+		
+		hibernateTemplate.update(todo);
+	}
+
+	@Override
+	public List<Todo> retrieveTodos(String user)
+	{
+		DetachedCriteria criteria= DetachedCriteria.forClass(Todo.class);
+		List<Todo> todoList =(List<Todo>) hibernateTemplate.findByCriteria(criteria);
+		return todoList;
+	}
+	
 
 }

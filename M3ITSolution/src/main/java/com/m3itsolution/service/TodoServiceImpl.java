@@ -38,11 +38,12 @@ public class TodoServiceImpl implements TodoService{
 		
 		this.UserTodoDao.addTodo(todo);
 	}
-
+	
+	//To be fixed
 	@Override
 	public void updateTodo(Todo todo) {
 		
-		this.UserTodoDao.updateTodo(todo);
+		this.UserTodoDao.updateTodo(todo, 0);
 	}
 
 	@Override
