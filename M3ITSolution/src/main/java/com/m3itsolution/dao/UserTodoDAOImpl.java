@@ -41,22 +41,35 @@ public class UserTodoDAOImpl implements UserTodoDAO{
 		
 		hibernateTemplate.delete(todo);
 	}
-	
-	
 	//To be fixed
+	/*
 	@Override
-	public void updateTodo(Todo todo, int id) {
+	public void updateAndSaveTodo(String desc,int id) {
 		
-		//Todo todo = hibernateTemplate.get(Todo.class,id);
-		
-		
-		//employee.setEmail(newEmail);
+		Todo todo = hibernateTemplate.get(Todo.class,id);
+		todo.setDesc(desc);
 		
 		hibernateTemplate.update(todo);
-	}
-
+	}*/
 	@Override
+	public void updateAndSaveTodo(Todo todo) {
+		
+		//Todo todo = hibernateTemplate.get(Todo.class,id);
+		//todo.setDesc(desc);
+		
+		hibernateTemplate.update(todo);
+		
+	}
+	
+
 	public List<Todo> retrieveTodos(String user)
+	{
+		DetachedCriteria criteria= DetachedCriteria.forClass(Todo.class);
+		List<Todo> todoList =(List<Todo>) hibernateTemplate.findByCriteria(criteria);
+		return todoList;
+	}
+	
+	public List<Todo> retrieveTodos(int userId)
 	{
 		DetachedCriteria criteria= DetachedCriteria.forClass(Todo.class);
 		List<Todo> todoList =(List<Todo>) hibernateTemplate.findByCriteria(criteria);

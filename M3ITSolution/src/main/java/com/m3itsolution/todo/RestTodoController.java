@@ -18,8 +18,9 @@ public class RestTodoController {
 
 	@RequestMapping(value = "/todo/", method = RequestMethod.GET)
 	public List<Todo> listAllTodos() {
-		List<Todo> users = todoservice.retrieveTodos("Ming");
-		return users;
+//		List<Todo> users = todoservice.retrieveTodos("Ming");
+//		return users;
+		return null;
 	}
 
 	@RequestMapping(value = "/todo/{id}", method = RequestMethod.GET)

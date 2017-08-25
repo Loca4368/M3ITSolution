@@ -70,8 +70,8 @@ public class LoginController {
     public String loginPage(@RequestParam (required= false) String error, ModelMap model) {
     	
     	
-    	String loginMessage = messageservice.getLoginMessage(error);
-    	model.addAttribute("errorMessage", loginMessage);
+    	//String loginMessage = messageservice.getLoginMessage(error);
+    	//model.addAttribute("errorMessage", loginMessage);
     	return "login";
     }
   

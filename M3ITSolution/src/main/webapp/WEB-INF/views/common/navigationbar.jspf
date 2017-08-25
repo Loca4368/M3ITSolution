@@ -6,7 +6,7 @@
 		
 		<a class="navbar-brand" href="/"><strong>M3ITSolution</strong></a>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="/todo">MyTodo</a></li>
+			<li class="active"><a href="/todo/list">MyTodo</a></li>
 			<li><a href="/news">News</a></li>
 			<li><a href="/about">About</a></li>
 			<li><a href="/contact">Contact</a></li>

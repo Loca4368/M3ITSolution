@@ -7,8 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "todo")
@@ -18,33 +24,36 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column (name ="userID")
+	@Column (name ="UserID")
 	private int userId;
 	
 	@Size(min = 6, message ="Enter at least 6 characters")
 	@Column (name ="Description")
 	private String desc;
 	
+	@NotNull 
+    @DateTimeFormat(pattern="dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	@Column (name ="TargetDate")
 	private Date targetDate;
 	
-	@Column (name ="IsDone")
+	@Column (name ="isDone")
 	private boolean isDone;
 	
-	//Default Constructor
-	public Todo()
-	{
-		
-	}
-	public Todo(int id, int userId, String desc, Date targetDate,
-			boolean isDone) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.desc = desc;
-		this.targetDate = targetDate;
-		this.isDone = isDone;
-	}
+//	//Default Constructor
+//	public Todo()
+//	{
+//		
+//	}
+//	public Todo(int id, int userId, String desc, Date targetDate,
+//			boolean isDone) {
+//		super();
+//		this.id = id;
+//		this.userId = userId;
+//		this.desc = desc;
+//		this.targetDate = targetDate;
+//		this.isDone = isDone;
+//	}
 	public int getId() {
 		return id;
 	}

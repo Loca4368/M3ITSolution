@@ -23,7 +23,7 @@
     	<p><spring:message code="welcome.greeting" arguments="${startMeeting}"/></p>
     	Current Locale : ${pageContext.response.locale} / ${locale} 
     -->
-<h4><a href="/todo">Manage Your Todos</a></h4>
+<h4><a href="/todo/list">Manage Your Todos</a></h4>
 </div>
 </div>
 <br>

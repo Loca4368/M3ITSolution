@@ -11,13 +11,13 @@ import com.m3itsolution.model.Todo;
 public interface UserTodoDAO {
 
 	public List<Todo> retrieveTodos(String user);
+	public List<Todo> retrieveTodos(int userId);
 	public Todo retrieveTodoById(int id);
 	public void addTodo(Todo todo);
-	public void updateTodo(Todo todo, int id);
+	//public void updateAndSaveTodo(String desc,int id);
+	//public void updateAndSaveTodo(String desc,int id);
+	public void updateAndSaveTodo(Todo todo);
 	public void deleteTodo(int id);
-	
-	
-	
 }
 
 

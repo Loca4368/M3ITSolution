@@ -22,10 +22,17 @@ public class TodoServiceImpl implements TodoService{
 		UserTodoDao = userTodoDao;
 	}
 
-	@Override
-	public List<Todo> retrieveTodos(String user) {
+//	@Override
+//	public List<Todo> retrieveTodos(String user) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	
+	//Hardcodeing for now
+	
+	public List<Todo> retrieveTodos(int userID) {
 		
-		return this.UserTodoDao.retrieveTodos(user);
+		return this.UserTodoDao.retrieveTodos(0);
 	}
 
 	@Override
@@ -40,10 +47,16 @@ public class TodoServiceImpl implements TodoService{
 	}
 	
 	//To be fixed
+//	@Override
+//	public void updateAndSaveTodo(String desc,int id){
+//		
+//		this.UserTodoDao.updateAndSaveTodo(desc, 0);
+//	}
+	
 	@Override
-	public void updateTodo(Todo todo) {
+	public void updateAndSaveTodo(Todo todo){
 		
-		this.UserTodoDao.updateTodo(todo, 0);
+		this.UserTodoDao.updateAndSaveTodo(todo);
 	}
 
 	@Override
@@ -51,5 +64,4 @@ public class TodoServiceImpl implements TodoService{
 		
 		this.UserTodoDao.deleteTodo(id);
 	}
-
 }
