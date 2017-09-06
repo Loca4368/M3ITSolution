@@ -17,9 +17,6 @@ public class MessageService {
 	@Autowired
     MessageSource messageSource;
 	
-	@Autowired
-	LoginService loginservice;
-	
 	//Get Login message
 	public String getLoginMessage(String error) {
 		
@@ -28,8 +25,9 @@ public class MessageService {
     	if(error != null)
     	{
     		
-    		error = messageSource.getMessage("error.message", new Object[]{loginservice.getLoggedInUserName()},currentLocale);
-         
+//    		error = messageSource.getMessage("error.message", new Object[]{sercurityService.findLoggedInUsername()},currentLocale);
+    		error = messageSource.getMessage("error.message", null, currentLocale);
+    		  
     	}
     	return error;
     }

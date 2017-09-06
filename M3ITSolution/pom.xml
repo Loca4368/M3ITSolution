@@ -73,13 +73,13 @@
         	<version>4.3.0.RELEASE</version>
         </dependency>
         
-         <!-- ORM -->
+        <!-- ORM -->
         <dependency>
         	<groupId>org.springframework</groupId>
         	<artifactId>spring-orm</artifactId>
         	<version>4.3.0.RELEASE</version>
         </dependency>
-        
+
         <!-- Transaction --> 
         <dependency>
 			<groupId>org.springframework</groupId>
@@ -102,7 +102,17 @@
             <artifactId>spring-security-config</artifactId>
             <version>4.0.1.RELEASE</version>
         </dependency>
-        
+        <dependency>
+    		<groupId>org.springframework.security</groupId>
+    		<artifactId>spring-security-taglibs</artifactId>
+    		<version>4.0.1.RELEASE</version>
+		</dependency>
+        <!-- JPA -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.11.6.RELEASE</version>
+        </dependency>
         <!-- JSON -->
         <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

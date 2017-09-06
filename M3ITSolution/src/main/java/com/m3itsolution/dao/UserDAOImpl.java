@@ -5,9 +5,12 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.m3itsolution.model.Todo;
 import com.m3itsolution.model.User;
 
 @Repository
@@ -15,56 +18,64 @@ public class UserDAOImpl implements UserDAO {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
 	
+	private HibernateTemplate hibernateTemplate;
+	
 	@Autowired
-	private SessionFactory sf;
-	
-	private Session getSession()
-	{
-		//return sessionFactory.getCurrentSession();
-		return sf.getCurrentSession();
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
-	
-	
-	@SuppressWarnings("unchecked")
-	
-	public List<User> listUsers() {
-		
-		Criteria criteria = getSession().createCriteria(User.class);
-		
-		return (List<User>)criteria.list();
-	}
-	
+
+	@Override
 	public void addUser(User user) {
-		
-		getSession().persist(user);
-		//logger.info("User add successfully, User Details="+p);
+		hibernateTemplate.save(user);
 	}
 
-	
-	public void updateUser(User user) {
-		
-		getSession().update(user);
-		
+	@Override
+	public User getUserById(int id){
+		User user = hibernateTemplate.get(User.class,id);
+		return user;
 	}
-
 	
-	public User getUserById(int id) {
+	@Override
+	public String getNameById(int id) {
+		// TODO Auto-generated method stub
+		User user = hibernateTemplate.get(User.class,id);
 		
-		User user = (User) getSession().get(User.class,id);
+		return user.getUsername();
+	}
+	
+	@Override
+	public User getUserByName(String name){
+		User user = hibernateTemplate.get(User.class,name);
 		return user;
 	}
 
-	
-	public void removeUser(int id) {
+	;
+	@Override
+	public void removeUser(int id){
+		User user =new User();
+		user.setId(id);
 		
-		User user = (User) getSession().get(User.class,id);
-		getSession().delete(user);
+		hibernateTemplate.delete(user);
 	}
 	
-	//Get name
-	public String getNameById(int id)
+	@Override
+	public void updateUser(User user) {
+		
+		//Todo todo = hibernateTemplate.get(Todo.class,id);
+		//todo.setDesc(desc);
+		
+		hibernateTemplate.update(user);
+		
+	}
+	
+	public List<User> listUsers()
 	{
-		return (String) getSession().get("username", id);
-		
+		DetachedCriteria criteria= DetachedCriteria.forClass(User.class);
+		List<User> userList =(List<User>) hibernateTemplate.findByCriteria(criteria);
+		return userList;
 	}
+
+	
+	
 }
