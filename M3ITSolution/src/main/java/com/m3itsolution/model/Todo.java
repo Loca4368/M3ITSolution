@@ -6,40 +6,39 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "todo")
 public class Todo {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column (name ="UserID")
+
+	@Column(name = "UserID")
 	private int userId;
-	
-	@Size(min = 6, message ="Enter at least 6 characters")
-	@Column (name ="Description")
+
+	@Size(min = 6, message = "Enter at least 6 characters")
+	@Column(name = "Description")
 	private String desc;
-	
-	@NotNull 
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	@Column (name ="TargetDate")
+	@Column(name = "TargetDate")
 	private Date targetDate;
-	
-	@Column (name ="isDone")
+
+	@Column(name = "isDone")
 	private boolean isDone;
-	
+
 //	//Default Constructor
 //	public Todo()
 //	{
@@ -57,33 +56,43 @@ public class Todo {
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getUserId() {
 		return userId;
 	}
+
 	public void setUser(int userId) {
 		this.userId = userId;
 	}
+
 	public String getDesc() {
 		return desc;
 	}
+
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
 	public Date getTargetDate() {
 		return targetDate;
 	}
+
 	public void setTargetDate(Date targetDate) {
 		this.targetDate = targetDate;
 	}
+
 	public boolean isDone() {
 		return isDone;
 	}
+
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +100,7 @@ public class Todo {
 		result = prime * result + id;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -104,12 +114,11 @@ public class Todo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return String.format(
-				"Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id,
-				userId, desc, targetDate, isDone);
+		return String.format("Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id, userId, desc, targetDate,
+				isDone);
 	}
-
 
 }
